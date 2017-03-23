@@ -1,0 +1,642 @@
+// Structure partial
+// As a general rule, margins should be set in wrappers while
+// paddings go in the elements inside the wrapper
+
+*, *:before, *:after {
+  @include box-sizing(border-box);
+}
+
+html, body {
+  margin: 0;
+}
+
+a {
+  padding: 5px 0;
+  text-decoration: none;
+  &:hover {
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+td {
+  background-clip: padding-box !important;
+}
+
+ol, ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#primary {
+  width: 960px;
+  margin: 0 auto;
+  padding: 0;
+  @include box-shadow(0 0 5px rgba(0,0,0,0.2));
+}
+
+// Templates
+
+%category-label-l {
+  display: block;
+  position: absolute;
+  width: 102px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+  color: white;  
+}
+
+%category-label-s {
+  display: block;
+  position: absolute;
+  width: 85px;
+  height: 15px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 16px;
+  color: white;  
+}
+
+// Global header
+
+#header {
+  width: 100%;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0;
+  border-bottom: solid 1px $color-light;
+  .header-logo {
+    float: left;
+    width: 320px;
+    height: 32px;
+    margin: 22px 0 0 25px;
+    background: url("css/img/logo.jpg") 0 0 no-repeat;
+  }
+  ol {
+    float: right;
+    height: 70px;
+    line-height: 70px;
+  }
+  li {
+    margin-right: 25px;
+    @include inline-block;
+  }
+}
+
+// Global contents
+
+article {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// Top page
+
+#body-header {
+  position: relative;
+  width: 100%;
+  height: 536px;
+  .bh-bg {
+    width: 100%;
+    height: 406px;
+    background: url("css/img/main.jpg") 0 0 no-repeat;
+    z-index: 10;
+  }
+  .bh-catch {
+    position: absolute;
+    top: 103px;
+    left: 177px;
+    width: 606px;
+    height: 186px;
+    background: url("css/img/main0.jpg") 0 0 no-repeat;
+    z-index: 100;
+  }
+  .bh-title {
+    width: 100%;
+    height: 130px;
+    margin: 0;
+    background: url("css/img/main2.jpg") 0 0 no-repeat;
+  }
+}
+
+#body-blog {
+  width: 100%;
+  padding: 54px 0;
+  h2 {
+    text-align: center;
+    margin: 0 0 12px;
+  }
+  .bb-text {
+    text-align: center;
+    margin: 0 0 26px;
+  }
+  ul {
+    display: block;
+    width: 406px;
+    margin: 0 auto 26px;
+  }
+  li {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  li > * {
+    line-height: 1em;
+  }
+  .category-kiji {
+    &:before {
+      @extend %category-label-l;
+      content: "記事";
+      top: 0;
+      left: -120px;
+      background: $color-ylabel;
+    }
+  }
+  .category-jimusho {
+    &:before {
+      @extend %category-label-l;
+      content: "事務所";
+      top: 0;
+      left: -120px;
+      background: $color-glabel;
+    }
+  }
+  .category-others {
+    &:before {
+      @extend %category-label-l;
+      content: "その他";
+      top: 0;
+      left: -120px;
+      background: $color-blabel;
+    }
+  }
+  time {
+    margin-right: 12px;
+  }
+  .bb-more {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+#body-motto {
+  width: 100%;
+  padding: 54px 0;
+  border-top: solid 1px $color-dark;
+  background: rgb(251,251,251);
+  h2 {
+    text-align: center;
+    margin: 0 0 26px;
+  }
+  li {
+    margin-bottom: 12px;
+    padding: 26px 0;
+    text-align: center;
+    border-top: solid 1px $color-light;
+    border-bottom: solid 1px $color-light;
+    background: rgb(255,255,255);
+    h3 {
+      margin: 0 0 26px;
+    }
+  }
+}
+
+#body-price {
+  width: 100%;
+  padding: 54px 0;
+  border-top: solid 1px $color-dark;
+  h2 {
+    text-align: center;
+    margin: 0 0 54px;
+  }
+  .bp-fee {
+    width: 654px;
+    text-align: center;
+    margin: 0 auto 54px;
+    hr {
+      height: 1px;
+      border: none;
+      margin: 0 0 16px;
+      background: $color-neutral;
+    }
+  }
+  .bp-contact {
+    display: table;
+    width: 654px;
+    height: 178px;
+    text-align: center;
+    margin: 0 auto 54px;
+    border: solid 1px $color-light;
+    p {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .bp-usage {
+    width: 654px;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+#body-intro {
+  width: 100%;
+  padding: 54px 0;
+  border-top: solid 1px $color-dark;
+  h2 {
+    text-align: center;
+    margin: 0 0 54px;
+  }
+  ul {
+    margin: 0 54px;
+    li{
+      float: left;
+    }
+  }
+  .bi-image {
+    width: 132px;
+    height: 180px;
+    margin-right: 24px;
+    background: url("css/img/youkosan.jpg") 0 0 no-repeat;
+  }
+  .bi-text {
+    width: 696px;
+  }
+  h3 {
+    border-bottom: solid 1px $color-neutral;
+  }
+  hr {
+    height: 1px;
+    border: none;
+    background: $color-neutral;
+  }
+  td:first-child {
+    padding-right: 12px;
+  }
+}
+
+#body-firm {
+  width: 100%;
+  padding: 54px 0;
+  background: rgb(251,251,251);
+  h2 {
+    text-align: center;
+    margin: 0 0 26px;
+  }
+  .bf-image {
+    width: 720px;
+    height: 362px;
+    margin: 0 auto 26px;
+    background: url("css/img/office.jpg") 0 0 no-repeat;
+  }
+  h3 {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  ul {
+    text-align: center
+  }
+}
+
+#body-access {
+  width: 100%;
+  padding: 54px 0;
+  h2 {
+    text-align: center;
+    margin: 0 0 26px;
+  }
+  .ba-map {
+    width: 720px;
+    height: 362px;
+    margin: 0 auto 26px;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+// Blog page
+
+#blog-header {
+  width: 100%;
+  margin-bottom: 54px;
+  .bh-inner {
+    width: 100%;
+    text-align: center;
+  }
+  h2 {
+    height: 75px;
+    margin: 0;
+    background: $color-glabel;
+  }
+  p {
+    height: 48px;
+    margin: 0;
+  }
+  .bh-image {
+    width: 960px;
+    height: 250px;
+    background: url("css/img/blog.jpg") 0 0 no-repeat;
+  }
+}
+
+#blog-posts, #single-posts {
+  float: left;
+  width: 622px;
+  margin-right: 12px;
+  padding: 0 0 54px 54px;
+  time {
+    position: relative;
+    margin-bottom: 26px;
+  }
+  p {
+    margin: 0;
+    padding: 12px 0 0;
+  }
+}
+
+#blog-posts {
+  .post {
+    padding: 26px 0;
+    border-bottom: solid 1px $color-dark;
+    &:first-child {
+      padding: 0 0 26px;
+    }
+  }
+//  .category-kiji time {
+//    &:before {
+//      @extend %category-label-l;
+//      content: "記事";
+//      top: -2px;
+//      left: 111px;
+//      background: $color-ylabel;
+//    }
+//  }
+//  .category-jimusho time {
+//    &:before {
+//      @extend %category-label-l;
+//      content: "事務所";
+//      top: -2px;
+//      left: 111px;
+//      background: $color-glabel;
+//    }
+//  }
+//  .category-others time {
+//    &:before {
+//      @extend %category-label-l;
+//      content: "その他";
+//      top: -2px;
+//      left: 111px;
+//      background: $color-blabel;
+//    }
+//  }
+  h3 {
+    width: 100%;
+    border-bottom: solid 6px rgb(251,251,251);
+  }
+}
+
+// Single page
+
+#single-posts {
+  h2 {
+    width: 100%;
+    border-bottom: solid 6px rgb(251,251,251);
+  }
+}
+
+// Pagination
+
+.pagination {
+  margin-top: 26px;
+  text-align: center;
+  li {
+    @include inline-block;
+  }
+  .pagi-prev a {
+    padding: 0 5px 0;
+    border-right: solid 1px $color-dark;
+  }
+  .pagi-home a {
+    padding: 0 5px;
+  }
+  .pagi-next a {
+    padding: 0 0 0 5px;
+    border-left: solid 1px $color-dark;
+  }
+}
+
+// Sidebar
+
+aside {
+  float: left;
+  width: 272px;
+  h3 {
+    width: 100%;
+    height: 33px;
+    padding-left: 12px;
+    background: $color-glabel;
+  }
+}
+
+#latest-posts {
+  margin-bottom: 30px;
+  .post {
+    padding: 12px 12px 18px;
+    border-bottom: solid 1px $color-dark;
+    &:hover {
+      background: rgb(251,251,251);
+    }
+    &:active {
+      background: rgb(251,251,251);
+    }
+  }
+  time {
+    position: relative;
+  }
+//  .category-kiji time {
+//    &:before {
+//      @extend %category-label-l;
+//      content: "記事";
+//      top: -2px;
+//      left: 111px;
+//      background: $color-ylabel;
+//    }
+//  }
+//  .category-jimusho time {
+//    &:before {
+//      @extend %category-label-l;
+//      content: "事務所";
+//      top: -2px;
+//      left: 111px;
+//      background: $color-glabel;
+//    }
+//  }
+//  .category-others time {
+//    &:before {
+//      @extend %category-label-l;
+//      content: "その他";
+//      top: -2px;
+//      left: 111px;
+//      background: $color-blabel;
+//    }
+//  }
+  ul {
+    margin-top: 6px;
+  }
+  li {
+    height: 56px;
+    @include inline-block;
+    &:first-child {
+      margin-right: 6px;
+    }
+  }
+  .category-kiji .img-eyecatch {
+    &:first-child {
+      display: block;
+      width: 102px;
+      height: 56px;
+      background: url("css/img/post_kiji.jpg") 0 0 no-repeat;
+    }
+  }
+  .category-jimusho .img-eyecatch {
+    &:first-child {
+      display: block;
+      width: 102px;
+      height: 56px;
+      background: url("css/img/post_jimusho.jpg") 0 0 no-repeat;
+    }
+  }
+  .category-others .img-eyecatch {
+    &:first-child {
+      display: block;
+      width: 102px;
+      height: 56px;
+      background: url("css/img/post_others.jpg") 0 0 no-repeat;
+    }
+  }
+  img {
+    width: 102px;
+    height: 56px;
+  }
+  h4 {
+    width: 133px;
+  }
+}
+
+//#category-posts {
+//  margin-bottom: 30px;
+//  border-bottom: solid 1px $color-dark;
+//  ul {
+//    padding: 12px 12px 18px;
+//    li {
+//      position: relative;
+//      margin: 0 0 4px 96px;
+//    }
+//  }
+//  .category-kiji {
+//    &:before {
+//      @extend %category-label-s;
+//      content: "記事";
+//      top: 4px;
+//      left: -96px;
+//      background: $color-ylabel;
+//    }
+//  }
+//  .category-jimusho {
+//    &:before {
+//      @extend %category-label-s;
+//      content: "事務所";
+//      top: 4px;
+//      left: -96px;
+//      background: $color-glabel;
+//    }
+//  }
+//  .category-others {
+//    &:before {
+//      @extend %category-label-s;
+//      content: "その他";
+//      top: 4px;
+//      left: -96px;
+//      background: $color-blabel;
+//    }
+//  }
+//}
+
+#archive-posts {
+  margin-bottom: 54px;
+  ol {
+    padding: 12px 12px 18px;
+  }
+  li, li a {
+    color: $color-neutral;
+  }
+}
+
+// Single page
+
+//#blog-single {
+//  padding: 0 154px 54px;
+//  .bs-back {
+//    display: block;
+//    margin: 0 auto;
+//    text-align: center;
+//  }
+//}
+
+// 404 page
+
+#body-404 {
+  width: 100%;
+  padding: 54px 0;
+  text-align: center;
+  h2 {
+    margin: 0 0 12px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+// Global footer
+
+#colophon {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  .scroll-top {
+    display: block;
+    width: 100%;
+    height: 54px;
+    text-align: center;
+    line-height: 54px;
+    background: rgb(251,251,251);
+  }
+  .footer-contents {
+    padding: 26px 0;
+    text-align: center;
+    background: rgb(246,242,248);
+  }
+  .footer-nav {
+    margin-bottom: 12px;
+  }
+  li {
+    position: relative;
+    margin-left: 12px;
+    padding-right: 12px;
+    border-right: solid 1px $color-dark;
+    @include inline-block;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+      border: none;
+    }
+  }
+}
